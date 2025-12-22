@@ -1,0 +1,41 @@
+<?php
+    date_default_timezone_set('Asia/Dhaka');
+    $servername = "localhost";
+    $db_username = "root";
+    $db_password = "";
+    $dbname = "school";
+
+
+    $conn = mysqli_connect($servername, $db_username, $db_password, $dbname);
+
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    // $conn->query("SET time_zone = '+06:00'");
+    mysqli_set_charset($conn, "utf8");
+
+    function encryptSt($text){
+        $enc = openssl_encrypt($text, "AES-128-ECB", "Abdur01709409266", OPENSSL_RAW_DATA);
+        return base64_encode($enc);
+    }
+
+    function decryptSt($text){
+        $txt = str_replace(' ', '+', $text);
+        $dec = base64_decode($txt);
+        return openssl_decrypt($dec, "AES-128-ECB", "Abdur01709409266", OPENSSL_RAW_DATA);
+    }
+    function addCookie($name, $value) {
+        setcookie($name, $value, [
+            'expires' => time() + (86400 * 30),
+            'path' => '/',
+            'domain' => '', //set domain
+            'secure' => true,
+            'httponly' => true,
+            'samesite' => 'Strict'
+        ]);
+    }
+    
+    // function getPercent($oldPrice, $currentPrice) {
+    //     if ($oldPrice == 0) return '0%';
+    //     return round((($oldPrice - $currentPrice) / $oldPrice) * 100) . '%';
+    // }

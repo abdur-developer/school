@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Teachers Table — Techtaranga</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body{background:#f8f9fa;font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans Bengali', 'Helvetica Neue', Arial}
+      .table-wrapper{max-width:1100px;margin:32px auto;padding:20px}
+      .teacher-photo{width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid #e6e6e6}
+      .row-actions .btn{margin-right:6px}
+      @media (max-width:767px){
+        .desktop-only{display:none}
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="table-wrapper">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <h4 class="mb-0">শিক্ষক তালিকা</h4>
+        <div>
+          <button class="btn btn-sm btn-outline-primary" id="btnExport">Export CSV</button>
+          <button class="btn btn-sm btn-primary" id="btnAdd">নতুন যোগ করুন</button>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text">🔎</span>
+          <input id="searchInput" type="search" class="form-control" placeholder="নাম বা বিভাগ দিয়ে খুঁজুন...">
+        </div>
+      </div>
+
+      <div class="table-responsive bg-white rounded shadow-sm">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th style="width:70px">ID</th>
+              <th>ছবি</th>
+              <th>নাম</th>
+              <th class="desktop-only">পদবী</th>
+              <th>বিভাগ</th>
+              <th class="desktop-only">যোগদানের তারিখ</th>
+              <th>পজিশন</th>
+              <th style="width:140px">এক্টশন</th>
+            </tr>
+          </thead>
+          <tbody id="teachersTbody">
+            <!-- sample row (from user data) -->
+            <tr>
+              <td>1</td>
+              <td>
+                <img src="assets/img/uploads/Techtaranga.com_File_6551e289e3cde.jpg" alt="মোঃ সিরাজুল ইসলাম" class="teacher-photo">
+              </td>
+              <td>
+                <div class="fw-semibold">মোঃ সিরাজুল ইসলাম</div>
+                <div class="text-muted small">Head teacher</div>
+              </td>
+              <td class="desktop-only">head teacher</td>
+              <td>all</td>
+              <td class="desktop-only">10/01/1995</td>
+              <td>1</td>
+              <td class="row-actions">
+                <button class="btn btn-sm btn-outline-secondary" onclick="viewTeacher(1)">দেখুন</button>
+                <button class="btn btn-sm btn-danger" onclick="deleteTeacher(1)">মুছুন</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Details Modal -->
+    <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">শিক্ষকের তথ্য</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="modalBody">
+            <!-- filled by JS -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+            <button type="button" class="btn btn-primary">সম্পাদন করুন</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Simple client-side search/filter
+      const tbody = document.getElementById('teachersTbody');
+      const searchInput = document.getElementById('searchInput');
+      searchInput.addEventListener('input', ()=>{
+        const q = searchInput.value.trim().toLowerCase();
+        for(const tr of tbody.querySelectorAll('tr')){
+          const text = tr.innerText.toLowerCase();
+          tr.style.display = text.includes(q) ? '' : 'none';
+        }
+      });
+
+      function viewTeacher(id){
+        // In real app you'd fetch details by id. Here we show example content.
+        const modalBody = document.getElementById('modalBody');
+        modalBody.innerHTML = `
+          <div class="text-center mb-3">
+            <img src="assets/img/uploads/Techtaranga.com_File_6551e289e3cde.jpg" class="teacher-photo" alt="teacher">
+          </div>
+          <table class="table table-borderless">
+            <tr><th>নাম</th><td>মোঃ সিরাজুল ইসলাম</td></tr>
+            <tr><th>পদবী</th><td>head teacher</td></tr>
+            <tr><th>বিভাগ</th><td>all</td></tr>
+            <tr><th>যোগদানের তারিখ</th><td>10/01/1995</td></tr>
+            <tr><th>পজিশন</th><td>1</td></tr>
+          </table>`;
+        const modal = new bootstrap.Modal(document.getElementById('detailModal'));
+        modal.show();
+      }
+
+      function deleteTeacher(id){
+        if(!confirm('আপনি কি নিশ্চিত? এই শিক্ষক মুছে ফেলা হবে।')) return;
+        // Implement server call to delete here. For demo, remove row from table.
+        const row = [...tbody.querySelectorAll('tr')].find(r=>r.firstElementChild.innerText==id);
+        if(row) row.remove();
+      }
+
+      // Export simple CSV of table rows
+      document.getElementById('btnExport').addEventListener('click', ()=>{
+        const rows = [['id','name','designation','department','joining_date','position']];
+        for(const tr of tbody.querySelectorAll('tr')){
+          const cols = tr.querySelectorAll('td');
+          if(cols.length===0) continue;
+          rows.push([
+            cols[0].innerText.trim(),
+            cols[2].querySelector('.fw-semibold')?.innerText.trim() || cols[2].innerText.trim(),
+            cols[3]?.innerText.trim() || cols[2].innerText.trim(),
+            cols[4]?.innerText.trim(),
+            cols[5]?.innerText.trim(),
+            cols[6]?.innerText.trim()
+          ]);
+        }
+        const csv = rows.map(r=>r.map(c=>`"${c.replace(/"/g,'""')}"`).join(',')).join('\n');
+        const blob = new Blob([csv],{type:'text/csv'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href = url; a.download = 'teachers.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+      });
+
+      // "Add" button demo
+      document.getElementById('btnAdd').addEventListener('click', ()=>{
+        alert('এখানে আপনি নতুন শিক্ষক যোগ করার ফর্ম দেখাতে পারেন (demo).');
+      });
+    </script>
+  </body>
+</html>
