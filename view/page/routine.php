@@ -27,14 +27,14 @@
             <tbody>
                 <?php
                     $sql = "SELECT * FROM routine ORDER BY id DESC LIMIT 25";
-                    $routin = mysqli_query($conn, $sql);
+                    $routine = mysqli_query($conn, $sql);
                     $i = 0;
-                    while ($row = mysqli_fetch_assoc($routin)){
+                    while ($row = mysqli_fetch_assoc($routine)){
                         $i++;
                 ?>
                 <tr role="row" class="<?= ($i%2 == 0) ? 'even': 'odd';?>">
                     <td class="text-center bangla sorting_1"><?=$i?></td>
-                    <td> <a href="#"><?=$row['title']?></a> </td>
+                    <td><?=$row['title']?></td>
                     <td class="text-center"><?=$row['publish_date']?></td>
                     <td class="text-center">
                         <?php if($row['download_link']){ ?>
@@ -69,4 +69,11 @@
 
 </div>
 
+<hr>
+<p class="m-0 text-center"><i class="bi bi-clock"> </i> শেষ হাল-নাগাদ করা হয়েছে:   
+    <?php
+        $sql = "SELECT time FROM routine ORDER BY time DESC LIMIT 1";
+        echo mysqli_fetch_assoc(mysqli_query($conn, $sql))['time'] ?? '';
+    ?>                 
+</p>
 <?php include("view/component/share.php"); ?>

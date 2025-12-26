@@ -29,9 +29,9 @@
             <tbody>
                 <?php
                     $sql = "SELECT * FROM notice ORDER BY id DESC LIMIT 25";
-                    $routin = mysqli_query($conn, $sql);
+                    $routine = mysqli_query($conn, $sql);
                     $i = 0;
-                    while ($row = mysqli_fetch_assoc($routin)){
+                    while ($row = mysqli_fetch_assoc($routine)){
                         $i++;
                 ?>
                 <tr role="row" class="<?= ($i%2 == 0) ? 'even': 'odd';?>">
@@ -70,4 +70,11 @@
     </script>
 
 </div>
+<hr>
+<p class="m-0 text-center"><i class="bi bi-clock"> </i> শেষ হাল-নাগাদ করা হয়েছে:   
+    <?php
+        $sql = "SELECT time FROM notice ORDER BY time DESC LIMIT 1;";
+        echo mysqli_fetch_assoc(mysqli_query($conn, $sql))['time'] ?? '';
+    ?>                 
+</p>
 <?php include("view/component/share.php"); ?>

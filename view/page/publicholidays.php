@@ -29,7 +29,10 @@
     </div>
     <hr>
     <p class="m-0 text-center"><i class="bi bi-clock"> </i> শেষ হাল-নাগাদ করা হয়েছে:   
-        ২০২৩-১০-০৪ ১৩:৫৪:১৪                 
+        <?php
+            $sql = "SELECT time FROM publicholidays ORDER BY time DESC LIMIT 1";
+            echo mysqli_fetch_assoc(mysqli_query($conn, $sql))['time'] ?? '';
+        ?>                
     </p>
     <?php include("view/component/share.php"); ?>
 </div>

@@ -90,7 +90,7 @@
                         </li>
                         <li>
                             <i class="text-primary fa fa-caret-right"></i>
-                            <a href="?q=routin" title="ক্লাস রুটিন ">ক্লাস রুটিন </a>
+                            <a href="?q=routine" title="ক্লাস রুটিন ">ক্লাস রুটিন </a>
                         </li>
                         <li>
                             <i class="text-primary fa fa-caret-right"></i>

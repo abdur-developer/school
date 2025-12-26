@@ -4,7 +4,7 @@
       <div class="main_header" style="background-image: url('assets/img/header-Image.jpg');">
           <div class="row align-items-center">
               <div class="col-2 text-start text-md-end ">
-                <a href="">
+                <a href="./">
                   <img class="logo" src="<?=$sys['logo']?>" alt="<?=$sys['name']?>"> 
                 </a>
               </div>
@@ -52,7 +52,7 @@
                 </ul>
               </li>
               <li><a href="?q=admission"><span>ভর্তি কার্যক্রম</span></a>  </li> 
-              <li><a class="nav-link" href="?q=routin"> রুটিন</a></li>
+              <li><a class="nav-link" href="?q=routine"> রুটিন</a></li>
               <li><a class="nav-link" href="?q=notice-board">নোটিশ </a></li>
               <li class="dropdown"><a href="#"><span>গ্যালারী</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
@@ -62,7 +62,7 @@
               </li>
     
                <!-- <li><a class="nav-link" href="?q=post">সাম্প্রতিক খবর </a></li> -->
-              <li><a class="nav-link" href="?q=contact">যোগাযোগ </a></li>
+              <li><a class="nav-link" href="?c=contact">যোগাযোগ </a></li>
     
             </ul>
             <i class="d-none bi mobile-nav-toggle bi-x"></i>

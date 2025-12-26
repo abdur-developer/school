@@ -32,7 +32,7 @@
 </div>
 <div class="row g-4">
     <?php
-    $sql = "SELECT * FROM `teachers`";
+    $sql = "SELECT * FROM teachers ORDER BY position ASC";
     $teachers = mysqli_query($conn, $sql);
 
     while($t = mysqli_fetch_assoc($teachers)){ ?>
@@ -48,7 +48,10 @@
     <?php } ?>
     <hr>
     <p class="m-0 text-center"><i class="bi bi-clock"> </i> শেষ হাল-নাগাদ করা হয়েছে:   
-        ২০২৩-১২-০২ ২৩:১৬:৩৩                 
+        <?php
+            $sql = "SELECT time FROM teachers ORDER BY time DESC LIMIT 1";
+            echo mysqli_fetch_assoc(mysqli_query($conn, $sql))['time'] ?? '';
+        ?>                 
     </p>
     <?php include("view/component/share.php"); ?>
 </div>

@@ -29,6 +29,7 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
         transition: all 0.3s;
         border-left: 4px solid var(--primary-color);
+        cursor: pointer;
     }
 
     .stats-card:hover {
@@ -227,59 +228,79 @@
 <!-- Stats Cards -->
 <div class="row">
     <div class="col-md-6 col-lg-3 fade-in" style="animation-delay: 0.1s;">
-        <div class="stats-card">
+        <div class="stats-card" onclick="location.href='?q=student_count'">
             <div class="card-icon users">
                 <i class="fas fa-users"></i>
             </div>
-            <div class="card-title">Total Users</div>
-            <div class="card-value">1,254</div>
-            <div class="card-change positive">
+            <?php
+                $sql = "SELECT SUM(boys + girls) AS total_students FROM student_count;";
+                $total_students = mysqli_fetch_assoc(mysqli_query($conn, $sql))['total_students'];
+            ?>
+            <div class="card-title">Total Students</div>
+            <div class="card-value"><?=$total_students?></div>
+            <!-- <div class="card-change positive">
+                class 6 to class 10
                 <i class="fas fa-arrow-up"></i> 12.5% from last month
-            </div>
+            </div> -->
         </div>
     </div>
 
     <div class="col-md-6 col-lg-3 fade-in" style="animation-delay: 0.2s;">
-        <div class="stats-card">
-            <div class="card-icon services">
-                <i class="fas fa-concierge-bell"></i>
+        <div class="stats-card" onclick="location.href='?q=teachers'">
+            <div class="card-icon users">
+                <i class="fas fa-users"></i>
             </div>
-            <div class="card-title">Active Services</div>
-            <div class="card-value">48</div>
-            <div class="card-change positive">
-                <i class="fas fa-arrow-up"></i> 3 new this week
-            </div>
+            <?php
+                $sql = "SELECT count(*) AS total_teachers FROM teachers;";
+                $total_teachers = mysqli_fetch_assoc(mysqli_query($conn, $sql))['total_teachers'];
+            ?>
+            <div class="card-title">Total Teachers</div>
+            <div class="card-value"><?=$total_teachers?></div>
+            <!-- <div class="card-change positive">
+                all teachers
+                <i class="fas fa-arrow-up"></i> 12.5% from last month
+            </div> -->
         </div>
     </div>
-
+    
     <div class="col-md-6 col-lg-3 fade-in" style="animation-delay: 0.3s;">
-        <div class="stats-card">
-            <div class="card-icon revenue">
-                <i class="fas fa-dollar-sign"></i>
+        <div class="stats-card" onclick="location.href='?q=staff'">
+            <div class="card-icon users">
+                <i class="fas fa-users"></i>
             </div>
-            <div class="card-title">Total Revenue</div>
-            <div class="card-value">$24,560</div>
-            <div class="card-change positive">
-                <i class="fas fa-arrow-up"></i> 8.2% from last quarter
-            </div>
+            <?php
+                $sql = "SELECT count(*) AS total_staff FROM staff;";
+                $total_staff = mysqli_fetch_assoc(mysqli_query($conn, $sql))['total_staff'];
+            ?>
+            <div class="card-title">Total Staff</div>
+            <div class="card-value"><?=$total_staff?></div>
+            <!-- <div class="card-change positive">
+                all staff
+                <i class="fas fa-arrow-up"></i> 12.5% from last month
+            </div> -->
         </div>
     </div>
 
     <div class="col-md-6 col-lg-3 fade-in" style="animation-delay: 0.4s;">
-        <div class="stats-card">
-            <div class="card-icon visitors">
-                <i class="fas fa-chart-line"></i>
+        <div class="stats-card" onclick="location.href='?q=notice'">
+            <div class="card-icon users">
+                <i class="fas fa-bell"></i>
             </div>
-            <div class="card-title">Monthly Visitors</div>
-            <div class="card-value">12,458</div>
-            <div class="card-change negative">
-                <i class="fas fa-arrow-down"></i> 2.1% from last month
-            </div>
+            <?php
+                $sql = "SELECT count(*) AS total_notice FROM notice;";
+                $total_notice = mysqli_fetch_assoc(mysqli_query($conn, $sql))['total_notice'];
+            ?>
+            <div class="card-title">Total Notice</div>
+            <div class="card-value"><?=$total_notice?></div>
+            <!-- <div class="card-change positive">
+                all notice
+                <i class="fas fa-arrow-up"></i> 12.5% from last month
+            </div> -->
         </div>
     </div>
 </div>
 
-<div class="row mt-4">
+<!-- <div class="row mt-4">
     <div class="col-lg-8 fade-in" style="animation-delay: 0.5s;">
         <div class="activity-card">
             <h5 class="mb-4">Recent Activities</h5>
@@ -355,4 +376,4 @@
             </button>
         </div>
     </div>
-</div>
+</div> -->

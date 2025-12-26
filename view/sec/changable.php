@@ -10,10 +10,10 @@
                 $allowed_q = [
                     "h-teacher", "managing-committee", "teachers", "stuff-information", 
                     "meritorious-student", "student-information", "room-information", 
-                    "entry-post-list", "publicholidays", "admission", "routin", 
-                    "notice-board", "post", "contact", "view-post", "photo-gallary", "view_notice"
+                    "entry-post-list", "publicholidays", "admission", "routine", 
+                    "notice-board", "post", "view-post", "photo-gallary", "view_notice"
                 ];
-                $allowed_c = ["history", "computer-use", "extracurricular"];
+                $allowed_c = ["history", "computer-use", "extracurricular", "contact"];
                 $disable_sidebar = ["photo-gallary", "post"];
 
                 if($q && in_array($q, $disable_sidebar)) $show_sidebar = false;

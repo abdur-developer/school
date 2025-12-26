@@ -63,7 +63,7 @@
           'Management' => [
             ['h' => '?q=course', 'i' => 'video', 't' => 'Course'],
             ['h' => '?q=portfolio', 'i' => 'box-open', 't' => 'Portfolio'],
-            // ['h' => '?q=testimonials', 'i' => 'comment-dots', 't' => 'Testimonials'],
+            ['h' => '?q=routine', 'i' => 'comment-dots', 't' => 'routine'],
             // ['h' => '?q=users', 'i' => 'users', 't' => 'Users']
           ],
           'System' => [
@@ -100,16 +100,18 @@
       "course", "course_module", "module_details", 
       "dashboard", "testimonials",
       "users", "settings", "slider", "edit_notice", "course_module",
-      "module_details"
+      "module_details", 
+      "custom_page", "empty_post", "h-teacher", "images", "meritorious_st", "notice", "publicholidays",
+      "room", "routine", "staff",  "system_info", "teachers", "student_count",
     ];
     $allowed_e = [
-      "portfolio", "testimonials",
+      "portfolio", "testimonials", "student_count",
       "course", "course_module", "module_details",
-      "users"
+      "users", "teachers", "staff", "notice", "routine"
     ];
 
     if ($q && in_array($q, $allowed_q)) include "sec/{$q}.php";
-    elseif($e && in_array($e, $allowed_e)) include "view/{$e}.php";
+    elseif($e && in_array($e, $allowed_e)) include "edit/{$e}.php";
     else include "sec/dashboard.php";
     
   ?>
