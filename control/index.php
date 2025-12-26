@@ -61,8 +61,8 @@
             ['h' => '?q=dashboard', 'i' => 'tachometer-alt', 't' => 'Dashboard']
           ],
           'Management' => [
-            ['h' => '?q=course', 'i' => 'video', 't' => 'Course'],
-            ['h' => '?q=portfolio', 'i' => 'box-open', 't' => 'Portfolio'],
+            // ['h' => '?q=course', 'i' => 'video', 't' => 'Course'],
+            // ['h' => '?q=portfolio', 'i' => 'box-open', 't' => 'Portfolio'],
             ['h' => '?q=routine', 'i' => 'comment-dots', 't' => 'routine'],
             // ['h' => '?q=users', 'i' => 'users', 't' => 'Users']
           ],
