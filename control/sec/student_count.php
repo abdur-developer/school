@@ -52,9 +52,9 @@
                     </div>
                     <h4 class="text-muted mb-3">
                         <?php if (!empty($search)): ?>
-                            No product found matching your search criteria
+                            No item found matching your search criteria
                         <?php else: ?>
-                            No product found in the database
+                            No item found in the database
                         <?php endif; ?>
                     </h4>
                     <?php if (!empty($search)): ?>
