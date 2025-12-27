@@ -26,7 +26,7 @@ try {
         
         if ($stmt->execute()) {
             $stmt->close();
-            header("Location: ../?e=notice&success=student+count+updated+successfully!&id=".encryptSt($id));
+            header("Location: ../?e=notice&success=notice+updated+successfully!&id=".encryptSt($id));
             exit();
         } else {
             throw new Exception("Database error: " . $stmt->error);

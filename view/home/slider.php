@@ -1,29 +1,39 @@
 <div class="col-md-12 mt-3 m-md-0">
     <div class="tt_carousel">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <?php
+            // Fetch slides from database
+            $query = "SELECT * FROM slider ORDER BY id ASC";
+            $result = mysqli_query($conn, $query);
+            $slides = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            $total = count($slides);
+            ?>
+            
             <div class="carousel-indicators d-none d-md-flex">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+                <?php foreach($slides as $index => $slide): ?>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" 
+                        data-bs-slide-to="<?=$index?>" 
+                        class="<?=$index === 0 ? 'active' : ''?>" 
+                        <?=$index === 0 ? 'aria-current="true"' : ''?>>
+                    </button>
+                <?php endforeach; ?>
             </div>
+
             <div class="carousel-inner">
-                <div class="carousel-item">
-                    <img src="assets/img/uploads/Techtaranga.com_File_6550b9e40df3b.jpg" class="d-block w-100" alt="<?=$sys['name']?>">
-                </div>
-                <div class="carousel-item active">
-                    <img src="assets/img/uploads/Techtaranga.com_File_6550b9e40dfde.jpg" class="d-block w-100" alt="<?=$sys['name']?>">
-                </div>
-                <div class="carousel-item">
-                    <img src="assets/img/uploads/Techtaranga.com_File_6550b9e40e06a.jpg" class="d-block w-100" alt="<?=$sys['name']?>">
-                </div>
+                <?php foreach($slides as $index => $slide): ?>
+                    <div class="carousel-item <?=$index === 0 ? 'active' : ''?>" onclick="location.href='<?=$slide['link']?>'">
+                        <img src="assets/img/a_rahman/<?=$slide['img']?>" class="d-block w-100" style="max-height: 400px;">
+                    </div>
+                <?php endforeach; ?>
             </div>
-            <button class="carousel-control-prev d-none d-md-block" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
+
+            <button class="carousel-control-prev d-none d-md-block" type="button" 
+                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next d-none d-md-block" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
+            <button class="carousel-control-next d-none d-md-block" type="button" 
+                data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>

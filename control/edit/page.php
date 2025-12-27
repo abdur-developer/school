@@ -1,15 +1,14 @@
 <?php
     $id = isset($_GET['id']) ? decryptSt($_GET['id']) : null;
     if($id != null){
-        $sql = "SELECT * FROM staff WHERE id = '$id'";
+        $sql = "SELECT * FROM custom_page WHERE id = '$id'";
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
     }else{
         $row = [
             'id' => null,
             'name' => null,
-            'title' => null,
-            'phone' => null
+            'html_txt' => null,
         ];
     }
 ?>
@@ -17,7 +16,7 @@
     <div class="card shadow-lg border-0">
         <div class="card-header bg-gradient-primary text-white">
             <div class="d-flex justify-content-between align-items-center">
-                <h4 class="mb-0"><i class="fas fa-edit me-2"></i>Edit staff Details</h4>
+                <h4 class="mb-0"><i class="fas fa-edit me-2"></i>Edit notice Details</h4>
                 <a href="javascript:history.back()" class="btn btn-light btn-sm">
                     <i class="fas fa-arrow-left me-1"></i> Back
                 </a>
@@ -26,7 +25,7 @@
         
         <div class="card-body">
             <!-- <php if ($result->num_rows > 0): ?> -->
-            <form action="action/update_staff.php" method="POST" class="needs-validation" novalidate>
+            <form action="action/update_page.php" method="POST" class="needs-validation" novalidate>
                 <input type="hidden" name="id" value="<?= htmlspecialchars($row['id']) ?>">
                 
                 <div class="row g-4">
@@ -34,28 +33,24 @@
                     <div class="col-md-6">
                         <!-- Title -->
                         <div class="form-floating mb-4">
-                            <input type="text" name="name" class="form-control" id="name" 
+                            <input type="text" name="name" class="form-control" id="title" 
                                    value="<?= htmlspecialchars($row['name']) ?>" required>
-                            <label for="name"><i class="fas fa-heading me-1 text-muted"></i>Name</label>
-                            <div class="invalid-feedback">Please provide a name</div>
-                        </div>
-                        <!-- Title -->
-                        <div class="form-floating mb-4">
-                            <input type="number" name="phone" class="form-control" id="phone" 
-                            value="<?= htmlspecialchars($row['phone']) ?>" required>
-                            <label for="phone"><i class="fas fa-calendar-days me-1 text-muted"></i>phone</label>
-                            <div class="invalid-feedback">Please provide a phone</div>
+                            <label for="title"><i class="fas fa-puzzle-piece me-1 text-muted"></i>title</label>
+                            <div class="invalid-feedback">Please provide a title</div>
                         </div>
                     </div>
                     
                     <!-- Right Column -->
                     <div class="col-md-6">
-                        <!-- Title -->
-                        <div class="form-floating mb-4">
-                            <input type="text" name="title" class="form-control" id="title" 
-                                   value="<?= htmlspecialchars($row['title']) ?>" required>
-                            <label for="title"><i class="fas fa-puzzle-piece me-1 text-muted"></i>title</label>
-                            <div class="invalid-feedback">Please provide a title</div>
+                        <!-- Description with Quill Editor -->
+                        <div class="mb-4">
+                            <label for="quill-editor" class="form-label">
+                                <i class="fas fa-align-left me-1 text-muted"></i>Description
+                            </label>
+                            <div id="quill-editor" style="height: 400px;">
+                                <textarea id="tiny" name="html_txt" style="height: 300px; width: 100%;"><?= $row['html_txt'] ?></textarea>
+                            </div>
+                            <small class="text-muted">Write detailed text with formatting options</small>
                         </div>
                         <!-- Image Upload -->
                         <!-- <div class="mb-4">
@@ -90,3 +85,55 @@
         </div>
     </div>
 </div>
+<!-- TinyMCE -->
+<script src="https://cdn.tiny.cloud/1/dt45u81y65w6zsnvtlgdzdqqiifg3zjfsf8angmrgud3u0gp/tinymce/8/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea#tiny',
+        plugins: [
+            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap',
+            'preview', 'anchor', 'searchreplace', 'visualblocks', 'fullscreen',
+            'insertdatetime', 'media', 'table', 'emoticons', 'wordcount'
+        ],
+        toolbar:
+            'undo redo | styles | bold italic underline | ' +
+            'alignleft aligncenter alignright alignjustify | ' +
+            'bullist numlist outdent indent | ' +
+            'link image media | code fullscreen preview | forecolor backcolor | ' +
+            'charmap emoticons | removeformat preview',
+        menubar: 'file edit view insert format tools help'
+    });
+
+
+// Set initial content from database
+// quill.root.innerHTML = `<= $row['description'] ?>`;
+
+// Form submission handler
+// document.querySelector('form').addEventListener('submit', function(e) {
+//     // Get HTML content from Quill and put it in hidden input
+//     const quillHtml = document.getElementById('quill-html');
+//     quillHtml.value = quill.root.innerHTML;
+    
+//     // Basic form validation
+//     if (!this.checkValidity()) {
+//         e.preventDefault();
+//         e.stopPropagation();
+//     }
+//     this.classList.add('was-validated');
+// });
+
+// Form validation
+(() => {
+  'use strict'
+  const forms = document.querySelectorAll('.needs-validation')
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+      form.classList.add('was-validated')
+    }, false)
+  })
+})();
+</script>

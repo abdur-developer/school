@@ -52,8 +52,8 @@ try {
     for ($i = 0; $i < 3; $i++) {
         $xx = $images[$i]; // Changed $id to $i
         if ($xx[0] && !empty($xx[1])) {
-            if (file_exists('../upload/' . $xx[1])) {
-                unlink('../upload/' . $xx[1]);
+            if (file_exists('../../assets/img/a_rahman/' . $xx[1])) {
+                unlink('../../assets/img/a_rahman/' . $xx[1]);
             }
             // Set the corresponding variable to null
             if ($i == 0) {
@@ -69,12 +69,12 @@ try {
     // Function to handle image upload
     function handleImageUpload($file, $current_img) {
         if (isset($file) && $file['error'] === UPLOAD_ERR_OK) {
-            $upload = uploadImage($file, '../upload/', 'circular_');
+            $upload = uploadImage($file, '../../assets/img/a_rahman/', 'circular_');
 
             if ($upload['success']) {
                 // Delete previous image if exists
-                if (!empty($current_img) && file_exists('../upload/' . $current_img)) {
-                    unlink('../upload/' . $current_img);
+                if (!empty($current_img) && file_exists('../../assets/img/a_rahman/' . $current_img)) {
+                    unlink('../../assets/img/a_rahman/' . $current_img);
                 }
                 return basename($upload['target_file']);
             } else {

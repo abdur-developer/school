@@ -1,15 +1,15 @@
 <?php
     $id = isset($_GET['id']) ? decryptSt($_GET['id']) : null;
     if($id != null){
-        $sql = "SELECT * FROM staff WHERE id = '$id'";
+        $sql = "SELECT * FROM publicholidays WHERE id = '$id'";
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
     }else{
         $row = [
             'id' => null,
             'name' => null,
-            'title' => null,
-            'phone' => null
+            'date' => null,
+            'day' => null
         ];
     }
 ?>
@@ -17,7 +17,7 @@
     <div class="card shadow-lg border-0">
         <div class="card-header bg-gradient-primary text-white">
             <div class="d-flex justify-content-between align-items-center">
-                <h4 class="mb-0"><i class="fas fa-edit me-2"></i>Edit staff Details</h4>
+                <h4 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Public Holidays Details</h4>
                 <a href="javascript:history.back()" class="btn btn-light btn-sm">
                     <i class="fas fa-arrow-left me-1"></i> Back
                 </a>
@@ -26,7 +26,7 @@
         
         <div class="card-body">
             <!-- <php if ($result->num_rows > 0): ?> -->
-            <form action="action/update_staff.php" method="POST" class="needs-validation" novalidate>
+            <form action="action/update_publicholidays.php" method="POST" class="needs-validation" novalidate>
                 <input type="hidden" name="id" value="<?= htmlspecialchars($row['id']) ?>">
                 
                 <div class="row g-4">
@@ -36,15 +36,15 @@
                         <div class="form-floating mb-4">
                             <input type="text" name="name" class="form-control" id="name" 
                                    value="<?= htmlspecialchars($row['name']) ?>" required>
-                            <label for="name"><i class="fas fa-heading me-1 text-muted"></i>Name</label>
+                            <label for="name"><i class="fas fa-puzzle-piece me-1 text-muted"></i>Name</label>
                             <div class="invalid-feedback">Please provide a name</div>
                         </div>
                         <!-- Title -->
                         <div class="form-floating mb-4">
-                            <input type="number" name="phone" class="form-control" id="phone" 
-                            value="<?= htmlspecialchars($row['phone']) ?>" required>
-                            <label for="phone"><i class="fas fa-calendar-days me-1 text-muted"></i>phone</label>
-                            <div class="invalid-feedback">Please provide a phone</div>
+                            <input type="number" name="day" class="form-control" id="day" 
+                                   value="<?= htmlspecialchars($row['day']) ?>">
+                            <label for="day"><i class="fas fa-heading me-1 text-muted"></i>Day</label>
+                            <div class="invalid-feedback">Please provide a day count</div>
                         </div>
                     </div>
                     
@@ -52,10 +52,10 @@
                     <div class="col-md-6">
                         <!-- Title -->
                         <div class="form-floating mb-4">
-                            <input type="text" name="title" class="form-control" id="title" 
-                                   value="<?= htmlspecialchars($row['title']) ?>" required>
-                            <label for="title"><i class="fas fa-puzzle-piece me-1 text-muted"></i>title</label>
-                            <div class="invalid-feedback">Please provide a title</div>
+                            <input type="date" name="date" class="form-control" id="date" 
+                                   value="<?= htmlspecialchars($row['date']) ?>" required>
+                            <label for="date"><i class="fas fa-puzzle-piece me-1 text-muted"></i>Holiday Date</label>
+                            <div class="invalid-feedback">Please provide a date</div>
                         </div>
                         <!-- Image Upload -->
                         <!-- <div class="mb-4">
@@ -90,3 +90,19 @@
         </div>
     </div>
 </div>
+<script>
+// Form validation
+(() => {
+  'use strict'
+  const forms = document.querySelectorAll('.needs-validation')
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+      form.classList.add('was-validated')
+    }, false)
+  })
+})();
+</script>

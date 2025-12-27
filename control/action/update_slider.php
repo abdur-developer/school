@@ -7,16 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 // Get form data
-$id = trim($_POST['id']);
-$name = trim($_POST['name']);
-$department = trim($_POST['department']);
-$joining_date = trim($_POST['joining_date']);
-$position = trim($_POST['position']);
-$designation = trim($_POST['designation']);
-$remove_img = isset($_POST['remove_img']);
+$id = $_POST['id'];
+$link = trim($_POST['link']);
 
-if (empty($name) || empty($department) || empty($joining_date)) {
-    header("Location: ../?e=teachers&error=all+fields+are+required.&id=".encryptSt($id));
+if (empty($link)) {
+    header("Location: ../?e=slider&id=" . encryptSt($id) . "&error=link+are+required+fields.");
     exit();
 }
 
@@ -64,28 +59,27 @@ try {
     }
     // Update or Insert
     if (!empty($id)) {
-        $sql = "UPDATE teachers SET name = ?, department = ?, designation = ?, position = ?, joining_date = ?, img = ? WHERE id = ?";
+        $sql = "UPDATE slider SET link = ?, img = ? WHERE id = ?";
 
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssissi",  $name, $department, $designation, $position, $joining_date, $img_name , $id);
+        $stmt->bind_param("ssi",$link, $img_name, $id);
         
         if ($stmt->execute()) {
             $stmt->close();
-            header("Location: ../?e=teachers&success=teacher+updated+successfully!&id=".encryptSt($id));
+            header("Location: ../?e=slider&id=" . encryptSt($id) . "&success=slider+updated+successfully!");
             exit();
         } else {
             throw new Exception("Database error: " . $stmt->error);
         }
     } else {
-        $sql = "INSERT INTO teachers (name, department, designation, position, joining_date, img) VALUES 
-        (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO slider (link, img) VALUES (?, ?)";
 
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssiss", $name, $department, $designation, $position, $joining_date, $img_name);
+        $stmt->bind_param("ss", $link, $img_name);
         if ($stmt->execute()) {
             $new_id = $conn->insert_id;
             $stmt->close();
-            header("Location: ../?e=teachers&id=" . encryptSt($new_id) . "&success=Teacher+created+successfully!");
+            header("Location: ../?e=slider&id=" . encryptSt($new_id) . "&success=slider+created+successfully!");
             exit();
         } else {
             throw new Exception("Database error: " . $stmt->error);

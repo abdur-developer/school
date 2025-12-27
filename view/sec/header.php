@@ -51,7 +51,7 @@
                   <li><a href="?c=extracurricular">সহপাঠ</a></li>
                 </ul>
               </li>
-              <li><a href="?q=admission"><span>ভর্তি কার্যক্রম</span></a>  </li> 
+              <!-- <li><a href="?q=admission"><span>ভর্তি কার্যক্রম</span></a>  </li>  -->
               <li><a class="nav-link" href="?q=routine"> রুটিন</a></li>
               <li><a class="nav-link" href="?q=notice-board">নোটিশ </a></li>
               <li class="dropdown"><a href="#"><span>গ্যালারী</span> <i class="bi bi-chevron-down"></i></a>

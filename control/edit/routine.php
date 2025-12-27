@@ -59,7 +59,7 @@
                         </div>
                         <!-- Image Upload -->
                         <!-- <div class="mb-4">
-                            <label class="form-label"><i class="fas fa-image me-1 text-muted"></i>Post Image 2</label>
+                            <label class="form-label"><i class="fas fa-image me-1 text-muted"></i>Post Image</label>
                             <php if (!empty($row['img'])): ?>
                                 <div class="mb-3 text-center">
                                     <img src="upload/<= htmlspecialchars($row['img']) ?>" alt="Current Image" 

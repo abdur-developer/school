@@ -8,7 +8,7 @@
         </div>
         <div class="col-12">
             <?php
-                $sql = "SELECT * FROM images ORDER BY display_order ASC";
+                $sql = "SELECT * FROM images ORDER BY id DESC";
                 $result = $conn->query($sql);
                 if($result->num_rows <= 0){
                     echo "কোন ছবি নেই !";
@@ -16,13 +16,14 @@
             ?>
                 <style>
                     .gallery {
-                        display: grid;
-                        grid-template-columns: 1fr 1fr 1fr 1fr;
-                        gap: 15px;
+                        column-count: 3;
+                        column-gap: 15px;
                         margin-bottom: 40px;
                     }
-                
+
                     .gallery-item {
+                        break-inside: avoid;
+                        margin-bottom: 15px;
                         position: relative;
                         border-radius: 20px;
                         overflow: hidden;
@@ -30,23 +31,23 @@
                         transition: all 0.4s ease;
                         background: white;
                     }
-                
+
                     .gallery-item:hover {
-                        transform: translateY(-10px);
+                        transform: translateY(-6px);
                         box-shadow: 0 20px 40px rgba(0,0,0,0.15);
                     }
-                
+
                     .gallery-item img {
                         width: 100%;
-                        height: 100%;
-                        object-fit: cover;
+                        height: auto;
+                        display: block;
                         transition: transform 0.5s ease;
                     }
-                
+
                     .gallery-item:hover img {
                         transform: scale(1.05);
                     }
-                
+
                     .image-overlay {
                         position: absolute;
                         bottom: 0;
@@ -58,27 +59,27 @@
                         transform: translateY(100%);
                         transition: transform 0.4s ease;
                     }
-                
+
                     .gallery-item:hover .image-overlay {
                         transform: translateY(0);
                     }
-                
+
                     .image-title {
                         font-size: 1.2rem;
                         font-weight: 600;
-                        margin-bottom: 5px;
                     }
-                
+
                     @media (max-width: 768px) {
                         .gallery {
-                            grid-template-columns: 1fr 1fr;
+                            column-count: 2;
                         }
                     }
                 </style>
+
                 <div class="gallery">
                     <?php while($image = $result->fetch_assoc()){ ?>
                         <div class="gallery-item">
-                            <img src="<?php echo htmlspecialchars($image['image_url']); ?>" 
+                            <img src="assets/img/a_rahman/<?php echo htmlspecialchars($image['image_url']); ?>" 
                                     alt="<?php echo htmlspecialchars($image['title']); ?>">
                             <div class="image-overlay">
                                 <div class="image-title"><?php echo htmlspecialchars($image['title']); ?></div>

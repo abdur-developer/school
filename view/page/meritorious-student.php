@@ -38,7 +38,7 @@
     while($student = mysqli_fetch_assoc($m_st)){ ?>
         <div class="col-md-4">
             <div class="st-card">
-                <img src="<?= $student['img'] ?>" class="st-img" alt="<?=$student['name']?>">
+                <img src="assets/img/a_rahman/<?= $student['img'] ?>" class="st-img" alt="<?=$student['name']?>">
                 <h4 class="mb-0"><?= $student['name'] ?></h4>
                 <p class="m-0"><?= '<b>Batch: </b>'.$student['batch'] ?></p>
                 <p class="m-0"><?= $student['designation'] ?></p>

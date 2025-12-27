@@ -29,9 +29,9 @@
             <tbody>
                 <?php
                     $sql = "SELECT * FROM notice ORDER BY id DESC LIMIT 25";
-                    $routine = mysqli_query($conn, $sql);
+                    $routin = mysqli_query($conn, $sql);
                     $i = 0;
-                    while ($row = mysqli_fetch_assoc($routine)){
+                    while ($row = mysqli_fetch_assoc($routin)){
                         $i++;
                 ?>
                 <tr role="row" class="<?= ($i%2 == 0) ? 'even': 'odd';?>">

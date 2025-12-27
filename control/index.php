@@ -61,10 +61,16 @@
             ['h' => '?q=dashboard', 'i' => 'tachometer-alt', 't' => 'Dashboard']
           ],
           'Management' => [
-            // ['h' => '?q=course', 'i' => 'video', 't' => 'Course'],
-            // ['h' => '?q=portfolio', 'i' => 'box-open', 't' => 'Portfolio'],
             ['h' => '?q=routine', 'i' => 'comment-dots', 't' => 'routine'],
-            // ['h' => '?q=users', 'i' => 'users', 't' => 'Users']
+            ['h' => '?q=page', 'i' => 'file-alt', 't' => 'Pages'],
+            ['h' => '?q=teachers', 'i' => 'chalkboard-teacher', 't' => 'Teachers'],
+            ['h' => '?q=staff', 'i' => 'user-tie', 't' => 'Staff'],
+            // ['h' => '?q=students', 'i' => 'user-graduate', 't' => 'Admissions'],
+            ['h' => '?q=notice', 'i' => 'bell', 't' => 'Notices'],
+            ['h' => '?q=images', 'i' => 'image', 't' => 'Gallery'],
+            ['h' => '?q=slider', 'i' => 'sliders-h', 't' => 'Homepage Slider'],
+            ['h' => '?q=meritorious_st', 'i' => 'award', 't' => 'Meritorious Students'],
+            ['h' => '?q=publicholidays', 'i' => 'calendar-alt', 't' => 'Public Holidays']
           ],
           'System' => [
             ['h' => '?q=settings', 'i' => 'cog', 't' => 'Settings'],
@@ -97,17 +103,13 @@
     $e = $_REQUEST['e'] ?? ''; // edit view value
 
     $allowed_q = [
-      "course", "course_module", "module_details", 
-      "dashboard", "testimonials",
-      "users", "settings", "slider", "edit_notice", "course_module",
-      "module_details", 
-      "custom_page", "empty_post", "h-teacher", "images", "meritorious_st", "notice", "publicholidays",
-      "room", "routine", "staff",  "system_info", "teachers", "student_count",
+      "dashboard", "empty_post", "h-teacher", "images", "meritorious_st", "notice", "publicholidays",
+      "room", "routine", "staff",  "system_info", "teachers", "student_count", "settings",
+      "page", "slider", "students"
     ];
     $allowed_e = [
-      "portfolio", "testimonials", "student_count",
-      "course", "course_module", "module_details",
-      "users", "teachers", "staff", "notice", "routine"
+      "student_count", "page", "users", "teachers", "staff", "notice", "routine",
+      "images", "meritorious_st", "publicholidays", "slider", "students"
     ];
 
     if ($q && in_array($q, $allowed_q)) include "sec/{$q}.php";

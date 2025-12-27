@@ -8,7 +8,7 @@
     <h4 class="post_catrgory_title">নোটিশ বোর্ড</h4>
     <h2 class="post_title_single"><?=$notice['title']?></h2>
     <div class="abot_post">
-        <p><i class="bi bi-clock"></i> <?=$notice['publish_date']?></p>
+        <p><i class="bi bi-clock"></i> <?=date("F j, Y", strtotime($notice['publish_date']))?></p>
         <hr>
     </div>
 </div>

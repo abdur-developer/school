@@ -9,26 +9,16 @@
     </div>
     <div class="scroll5-right">
         <marquee direction="left" scrollamount="5px" onmouseover="this.stop()" onmouseout="this.start()">
-            <a href="?q=notice-board&notice=FRcwmVqMTosV">
-                <span class="badge bg-primary"> September 29, 2025 </span> সরকারি ছুটির তালিকা ও
-                প্রতিষ্ঠানের কার্যক্রম এর তথ্য অনলাইনে প্রকাশ করতে হবে
-            </a>
-            <a href="?q=notice-board&notice=BVCWoqNbkCem">
-                <span class="badge bg-primary"> September 29, 2025 </span> সকল শিক্ষক ও কর্মচারিদের
-                প্রয়োজনীয় তথ্য ওয়েবসাইটে প্রকাশ বিষয়ে
-            </a>
-            <a href="?q=notice-board&notice=avmZeFLsbBdL">
-                <span class="badge bg-primary"> September 29, 2025 </span> সকল শ্রেণীর ক্লাস রুটিন ও
-                শিক্ষার্থীদের ভর্তি প্রক্রিয়া ডিজিটাল করন বিষয়ে
-            </a>
-            <a href="?q=notice-board&notice=sOUTbWFUVpZA">
-                <span class="badge bg-primary"> September 29, 2025 </span> ভর্তি কার্যক্রম অনলাইনে
-                পরিচালনা ও আবেদন সংক্রান্ত তথ্য
-            </a>
-            <a href="?q=notice-board&notice=poDaksHBkYWV">
-                <span class="badge bg-primary"> September 29, 2025 </span> সরকারি নির্দেশনা অনুযায়ী
-                প্রতিষ্ঠানের ডায়নামিক ওয়েবসাইট তৈরি বিষয়ে
-            </a>
+            <?php
+                $sql = "SELECT * FROM notice ORDER BY time DESC LIMIT 5";
+                $result = mysqli_query($conn, $sql);
+                while($row = mysqli_fetch_assoc($result)){ ?>
+                    <a href="?q=view_notice&notice=<?=encryptSt($row['id'])?>">
+                        <span class="badge bg-primary"> <?=date("F j, Y", strtotime($row['publish_date']))?> </span> <?=$row['title']?>
+                    </a>
+                <?php }
+            ?>
+            
 
         </marquee>
     </div>
