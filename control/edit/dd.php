@@ -223,7 +223,7 @@
 </div>
 
     <!-- TinyMCE -->
-    <script src="https://cdn.tiny.cloud/1/dt45u81y65w6zsnvtlgdzdqqiifg3zjfsf8angmrgud3u0gp/tinymce/8/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/zup7ipqqbmsl14t0o67wl2t2k4yegpfq4muw2g0agyhsihaq/tinymce/8/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         tinymce.init({
             selector: 'textarea#tiny',
