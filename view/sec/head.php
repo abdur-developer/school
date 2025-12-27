@@ -16,6 +16,6 @@
   <meta property="og:url" content="<?=$sys['web_link']?>">
   <meta property="og:type" content="website">
   <meta property="og:title" content="<?=$sys['name']?>"> 
-  <meta property="og:image" content="assets/img/a_rahman/<?=$sys['bottom_cover']?>">
+  <meta property="og:image" content="<?=$sys['web_link']?>assets/img/a_rahman/<?=$sys['bottom_cover']?>">
   
 </head>
