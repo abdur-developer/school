@@ -38,7 +38,7 @@
     while($t = mysqli_fetch_assoc($teachers)){ ?>
         <div class="col-md-4">
             <div class="teacher-card">
-                <img src="<?= $t['img'] ?>" class="teacher-img" alt="Teacher">
+                <img src="assets/img/a_rahman/<?= $t['img'] ?>" class="teacher-img" alt="Teacher">
                 <h4 class="mb-0"><?= $t['name'] ?></h4>
                 <p class="m-0"><?= $t['designation'] ?></p>
                 <p class="m-0">subject: <?= $t['department'] ?></p>

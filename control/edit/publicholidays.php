@@ -62,7 +62,7 @@
                             <label class="form-label"><i class="fas fa-image me-1 text-muted"></i>Post Image</label>
                             <php if (!empty($row['img'])): ?>
                                 <div class="mb-3 text-center">
-                                    <img src="upload/<= htmlspecialchars($row['img']) ?>" alt="Current Image" 
+                                    <img src="../assets/img/a_rahman/<= htmlspecialchars($row['img']) ?>" alt="Current Image" 
                                          class="img-thumbnail rounded" style="max-height: 200px;">
                                     <div class="form-check mt-2">
                                         <input class="form-check-input" type="checkbox" name="remove_img" id="remove_img">

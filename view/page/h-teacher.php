@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4 text-center left align-items-center p-1">
                 <div class="image-container">
-                    <img src="<?=$h_teacher['img']?>" alt="<?=$h_teacher['name']?>">
+                    <img src="assets/img/a_rahman/<?=$h_teacher['img']?>" alt="<?=$h_teacher['name']?>">
                     <div class="ins_head text-center">
                         <h4 class="fs-5 m-0"><?=$h_teacher['name']?></h4>
                         <p class="m-0">প্রধান শিক্ষক </p>

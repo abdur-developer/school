@@ -157,7 +157,7 @@
                             <label class="form-label"><i class="fas fa-image me-1 text-muted"></i>Post Image 1</label>
                             <?php if (!empty($row['img'])): ?>
                                 <div class="mb-3 text-center">
-                                    <img src="upload/<?= htmlspecialchars($row['img']) ?>" alt="Current Image" 
+                                    <img src="../assets/img/a_rahman/<?= htmlspecialchars($row['img']) ?>" alt="Current Image" 
                                          class="img-thumbnail rounded" style="max-height: 200px;">
                                     <div class="form-check mt-2">
                                         <input class="form-check-input" type="checkbox" name="remove_img" id="remove_img">
@@ -175,7 +175,7 @@
                             <label class="form-label"><i class="fas fa-image me-1 text-muted"></i>Post Image</label>
                             <?php if (!empty($row['img_2'])): ?>
                                 <div class="mb-3 text-center">
-                                    <img src="upload/<?= htmlspecialchars($row['img_2']) ?>" alt="Current Image" 
+                                    <img src="../assets/img/a_rahman/<?= htmlspecialchars($row['img_2']) ?>" alt="Current Image" 
                                          class="img-thumbnail rounded" style="max-height: 200px;">
                                     <div class="form-check mt-2">
                                         <input class="form-check-input" type="checkbox" name="remove_img_2" id="remove_img_2">
@@ -193,7 +193,7 @@
                             <label class="form-label"><i class="fas fa-image me-1 text-muted"></i>Post Image 3</label>
                             <?php if (!empty($row['img_3'])): ?>
                                 <div class="mb-3 text-center">
-                                    <img src="upload/<?= htmlspecialchars($row['img_3']) ?>" alt="Current Image" 
+                                    <img src="../assets/img/a_rahman/<?= htmlspecialchars($row['img_3']) ?>" alt="Current Image" 
                                          class="img-thumbnail rounded" style="max-height: 200px;">
                                     <div class="form-check mt-2">
                                         <input class="form-check-input" type="checkbox" name="remove_img_3" id="remove_img_3">

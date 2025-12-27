@@ -63,6 +63,7 @@
           'Management' => [
             ['h' => '?q=routine', 'i' => 'comment-dots', 't' => 'routine'],
             ['h' => '?q=page', 'i' => 'file-alt', 't' => 'Pages'],
+            ['h' => '?e=h-teacher', 'i' => 'user', 't' => 'Head Teacher'],
             ['h' => '?q=teachers', 'i' => 'chalkboard-teacher', 't' => 'Teachers'],
             ['h' => '?q=staff', 'i' => 'user-tie', 't' => 'Staff'],
             // ['h' => '?q=students', 'i' => 'user-graduate', 't' => 'Admissions'],
@@ -70,9 +71,11 @@
             ['h' => '?q=images', 'i' => 'image', 't' => 'Gallery'],
             ['h' => '?q=slider', 'i' => 'sliders-h', 't' => 'Homepage Slider'],
             ['h' => '?q=meritorious_st', 'i' => 'award', 't' => 'Meritorious Students'],
+            ['h' => '?q=room', 'i' => 'building', 't' => 'Rooms'],
             ['h' => '?q=publicholidays', 'i' => 'calendar-alt', 't' => 'Public Holidays']
           ],
           'System' => [
+            ['h' => '?e=system', 'i' => 'circle-question', 't' => 'System Info'],
             ['h' => '?q=settings', 'i' => 'cog', 't' => 'Settings'],
             ['h' => 'logout.php', 'i' => 'sign-out-alt', 't' => 'Logout']
           ]
@@ -105,11 +108,11 @@
     $allowed_q = [
       "dashboard", "empty_post", "h-teacher", "images", "meritorious_st", "notice", "publicholidays",
       "room", "routine", "staff",  "system_info", "teachers", "student_count", "settings",
-      "page", "slider", "students"
+      "page", "slider", "students" , "room"
     ];
     $allowed_e = [
-      "student_count", "page", "users", "teachers", "staff", "notice", "routine",
-      "images", "meritorious_st", "publicholidays", "slider", "students"
+      "student_count", "page", "users", "teachers", "staff", "notice", "routine", "system",
+      "images", "meritorious_st", "publicholidays", "slider", "students", "h-teacher", "room"
     ];
 
     if ($q && in_array($q, $allowed_q)) include "sec/{$q}.php";

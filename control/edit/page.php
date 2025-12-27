@@ -16,7 +16,7 @@
     <div class="card shadow-lg border-0">
         <div class="card-header bg-gradient-primary text-white">
             <div class="d-flex justify-content-between align-items-center">
-                <h4 class="mb-0"><i class="fas fa-edit me-2"></i>Edit notice Details</h4>
+                <h4 class="mb-0"><i class="fas fa-edit me-2"></i>Edit page Details</h4>
                 <a href="javascript:history.back()" class="btn btn-light btn-sm">
                     <i class="fas fa-arrow-left me-1"></i> Back
                 </a>
@@ -57,7 +57,7 @@
                             <label class="form-label"><i class="fas fa-image me-1 text-muted"></i>Post Image</label>
                             <php if (!empty($row['img'])): ?>
                                 <div class="mb-3 text-center">
-                                    <img src="upload/<= htmlspecialchars($row['img']) ?>" alt="Current Image" 
+                                    <img src="../assets/img/a_rahman/<= htmlspecialchars($row['img']) ?>" alt="Current Image" 
                                          class="img-thumbnail rounded" style="max-height: 200px;">
                                     <div class="form-check mt-2">
                                         <input class="form-check-input" type="checkbox" name="remove_img" id="remove_img">

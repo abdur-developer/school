@@ -5,7 +5,7 @@
           <div class="row align-items-center">
               <div class="col-2 text-start text-md-end ">
                 <a href="./">
-                  <img class="logo" src="<?=$sys['logo']?>" alt="<?=$sys['name']?>"> 
+                  <img class="logo" src="assets/img/a_rahman/<?=$sys['logo']?>" alt="<?=$sys['name']?>"> 
                 </a>
               </div>
               <div class="col-8">

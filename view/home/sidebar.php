@@ -39,7 +39,7 @@
         <div class="tt-card">
           <h3 class="name_of_des">প্রধান শিক্ষক </h3>
           <div class="tt-card-body text-center">
-            <img class="person_image" src="<?=$h_teacher['img']?>" alt="<?=$h_teacher['name']?>">
+            <img class="person_image" src="assets/img/a_rahman/<?=$h_teacher['img']?>" alt="<?=$h_teacher['name']?>">
             <h4 class="m-0 person_name"><?=$h_teacher['name']?></h4>
             <div class="mt-2 mb-2 divider"></div>
             <div class="social-icon">

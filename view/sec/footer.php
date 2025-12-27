@@ -28,7 +28,7 @@
                     <div class="footer_third">
                         <h4 class="sub-title-tt">পরিকল্পনা ও বাস্তবায়নে</h4>
                         <p class="m-0 sub-text">মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তর</p>
-                        <p class="m-0 tt_cradit">প্রযুক্তি সহযোগিতায় <a target="_blank" href="#">SSC 2K21</a> </p>
+                        <p class="m-0 tt_cradit">প্রযুক্তি সহযোগিতায় <a target="_blank" href="creator/">SSC 2K21</a> </p>
                     </div>
                     </div>
                 </div>   
