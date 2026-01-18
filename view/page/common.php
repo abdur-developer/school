@@ -12,7 +12,7 @@
     </div>
     <hr>
     <p class="m-0 text-center">
-        <i class="bi bi-clock"> </i> শেষ হাল-নাগাদ করা হয়েছে:   <?=$custom['update_time']?>
+        <i class="bi bi-clock"> </i> শেষ হাল-নাগাদ করা হয়েছে:   <?=getTime($custom['update_time'])?>
     </p>
     <?php include("view/component/share.php"); ?>
 </div>

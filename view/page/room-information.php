@@ -75,7 +75,7 @@
    শেষ হাল-নাগাদ করা হয়েছে:
    <?php
         $sql = "SELECT time FROM room ORDER BY time DESC LIMIT 1";
-        echo mysqli_fetch_assoc(mysqli_query($conn, $sql))['time'] ?? '';
+        echo getTime(mysqli_fetch_assoc(mysqli_query($conn, $sql))['time'] ?? '');
     ?>
     </p>
    <?php include("view/component/share.php"); ?>

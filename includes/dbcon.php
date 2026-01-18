@@ -39,3 +39,7 @@
     //     if ($oldPrice == 0) return '0%';
     //     return round((($oldPrice - $currentPrice) / $oldPrice) * 100) . '%';
     // }
+    function getTime($stTime) {
+        $dateTime = new DateTime($stTime);
+        return $dateTime->format('d F Y h:i A');
+    }
